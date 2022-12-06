@@ -1,5 +1,10 @@
+body {
+  background-color: #1b1b1b;
+}
+
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: #ffffff;
 }

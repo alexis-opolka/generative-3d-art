@@ -7,19 +7,19 @@
 // 4th stage: It's a duplicata of our 2nd stage but we're using our algorithm used in the last stage to create the drawing
 
 var points = []
-var mult = 0.008
+var mult = 0.005
 
 // We create the drawable where we'll be able to draw later on
 function setup(){
   // At first, it was with the window height and width but then using the Developer tools made the canvas smaller
   // TODO: think of a way to dynamically resize the canvas in order to not lose the focus (and recreate the missing parts
   // TODO: that weren't generated the first time.)
-  createCanvas(400, 400)
+  createCanvas(innerWidth, innerHeight)
   background(30)
   angleMode(DEGREES)
   noiseDetail(10)
 
-  var density = 30
+  var density = 80
   var space = width / density
 
   for (var x = 0; x < width; x+= space) {
@@ -40,10 +40,14 @@ function draw(){
     var b = map(points[i].x, 0, width, 255, 50)
 
     fill(r,g,b)
+    // We're adding some noise over the creation of points at direction
+    if (i < points.length / 2) {
+      var angle = map(noise(points[i].x * mult, points[i].y * mult), 0, 1, 0, 720)
+    } else {
+      var angle = map(noise(points[i].x * mult+1, points[i].y * mult+2), 0, 1, 1, 720)
+    }
 
-    var angle = map(noise(points[i].x * mult, points[i].y * mult), -2, 1, 0, 720)
-
-    points[i].add(createVector(cos(angle), sin(angle)))
+    points[i].add(createVector(sin(angle), cos(angle)))
 
     ellipse(points[i].x, points[i].y, 1)
   }

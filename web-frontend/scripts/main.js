@@ -1,7 +1,6 @@
-import './style.css';
+import '../styles/master.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import * as pFive from './libs/p5/p5';
 
 // Setup
 

@@ -7,9 +7,9 @@
 // 4th stage: It's a duplicata of our 2nd stage but we're using our algorithm used in the last stage to create the drawing
 
 if (innerHeight > innerWidth) {
-  var density = (innerHeight/innerWidth)*10
+  var density = innerHeight/innerWidth
 } else if (innerWidth > innerHeight) {
-  var density = (innerWidth/innerHeight)*20
+  var density = (innerWidth/innerHeight)*5
 }
 
 //var density = (innerHeight/innerWidth)*20 // (innerWidth/innerHeight)*10;
